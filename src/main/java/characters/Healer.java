@@ -27,14 +27,19 @@ public abstract class Healer extends Player implements IHeal {
         this.inventory.remove(healingItem);
     }
 
-
+    public boolean hasItem(HealingItem item) {
+        return this.inventory.contains(item);
+    }
 
     public String heal(Player character, HealingItem healingItem) {
-        int heal = healingItem.getHealingPower();
-        character.gainHP(heal);
+        if(this.hasItem(healingItem)) {
+            int heal = healingItem.getHealingPower();
+            character.gainHP(heal);
 
-        this.removeHealingItem(healingItem);
+            this.removeHealingItem(healingItem);
 
-        return this.getCatchPhrase();
+            return this.getCatchPhrase();
+        }
+        return "You don't have that item";
     }
 }

@@ -5,7 +5,7 @@ import components.Runestone;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class ClericTest {
 
@@ -78,6 +78,14 @@ public class ClericTest {
     }
 
     @Test
+    public void hasHealingItem() {
+        Runestone runestone = new Runestone(25);
+        cleric.addHealingItem(herbalTea);
+        assertTrue(cleric.hasItem(herbalTea));
+        assertFalse(cleric.hasItem(runestone));
+    }
+
+    @Test
     public void canHeal() {
         cleric.addHealingItem(herbalTea);
         cleric.loseHP(20);
@@ -91,5 +99,10 @@ public class ClericTest {
         cleric.addHealingItem(herbalTea);
         cleric.loseHP(20);
         assertEquals("Yir healed!", cleric.heal(cleric, herbalTea));
+    }
+
+    @Test
+    public void cannotHeal() {
+        assertEquals("You don't have that item", cleric.heal(cleric, herbalTea));
     }
 }
