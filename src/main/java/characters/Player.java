@@ -3,12 +3,14 @@ package characters;
 public abstract class Player {
 
     private String name;
-    private int hp;
+    private int maxHP;
+    private int currentHP;
     private String catchPhrase;
 
-    public Player(String name, int hp, String catchPhrase) {
+    public Player(String name, int maxHP, String catchPhrase) {
         this.name = name;
-        this.hp = hp;
+        this.maxHP = maxHP;
+        this.currentHP = maxHP;
         this.catchPhrase = catchPhrase;
     }
 
@@ -16,11 +18,28 @@ public abstract class Player {
         return this.name;
     }
 
-    public int getHP() {
-        return this.hp;
+    public int getMaxHP() {
+        return this.maxHP;
+    }
+
+    public int getCurrentHP() {
+        return this.currentHP;
     }
 
     public String getCatchPhrase() {
         return this.catchPhrase;
+    }
+
+    public void loseHP(int damage) {
+        this.currentHP -= damage;
+    }
+
+    public void gainHP(int heal) {
+        if(heal + this.currentHP < this.maxHP) {
+            this.currentHP += heal;
+        }
+        else {
+            this.currentHP = this.maxHP;
+        }
     }
 }

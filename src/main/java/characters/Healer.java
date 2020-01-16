@@ -6,8 +6,8 @@ public abstract class Healer extends Player {
 
     private HealingItem healingItem;
 
-    public Healer(String name, int hp, String catchPhrase, HealingItem healingItem) {
-        super(name, hp, catchPhrase);
+    public Healer(String name, int maxHP, String catchPhrase, HealingItem healingItem) {
+        super(name, maxHP, catchPhrase);
         this.healingItem = healingItem;
     }
 }

@@ -23,8 +23,8 @@ public class ClericTest {
     }
 
     @Test
-    public void canReturnHP() {
-        assertEquals(50, cleric.getHP());
+    public void canReturnMaxHP() {
+        assertEquals(50, cleric.getMaxHP());
     }
 
     @Test
@@ -32,5 +32,28 @@ public class ClericTest {
         assertEquals("Yir healed!", cleric.getCatchPhrase());
     }
 
+    @Test
+    public void canReturnCurrentHP() {
+        assertEquals(50, cleric.getCurrentHP());
+    }
 
+    @Test
+    public void canLoseHP() {
+        cleric.loseHP(10);
+        assertEquals(40, cleric.getCurrentHP());
+    }
+//
+    @Test
+    public void canGainHP() {
+        cleric.loseHP(15);
+        cleric.gainHP(10);
+        assertEquals(45, cleric.getCurrentHP());
+    }
+
+    @Test
+    public void cannotHealMoreThanMaxHP() {
+        cleric.loseHP(10);
+        cleric.gainHP(20);
+        assertEquals(50, cleric.getCurrentHP());
+    }
 }
