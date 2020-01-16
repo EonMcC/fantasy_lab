@@ -1,6 +1,9 @@
 package interfaces;
 
+import characters.Player;
+import components.HealingItem;
+
 public interface IHeal {
 
-    public int heal();
+    public String heal(Player character, HealingItem healingItem);
 }

@@ -7,4 +7,8 @@ public abstract class HealingItem {
     public HealingItem(int healingPower) {
         this.healingPower = healingPower;
     }
+
+    public int getHealingPower() {
+        return this.healingPower;
+    }
 }

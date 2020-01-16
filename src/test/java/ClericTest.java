@@ -1,6 +1,7 @@
 import characters.Cleric;
 
 import components.HerbalTea;
+import components.Runestone;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +15,7 @@ public class ClericTest {
     @Before
     public void before() {
         herbalTea = new HerbalTea(5);
-        cleric = new Cleric("Florence", 50, "Yir healed!", herbalTea);
+        cleric = new Cleric("Florence", 50, "Yir healed!");
     }
 
     @Test
@@ -55,5 +56,40 @@ public class ClericTest {
         cleric.loseHP(10);
         cleric.gainHP(20);
         assertEquals(50, cleric.getCurrentHP());
+    }
+
+    @Test
+    public void inventoryStartsEmpty() {
+        assertEquals(0, cleric.getInventory().size());
+    }
+
+    @Test
+    public void canAddHealingItem() {
+        Runestone runestone = new Runestone(25);
+        cleric.addHealingItem(runestone);
+        assertEquals(1, cleric.getInventory().size());
+    }
+
+    @Test
+    public void canRemoveHealingItem() {
+        cleric.addHealingItem(herbalTea);
+        cleric.removeHealingItem(herbalTea);
+    assertEquals(0, cleric.getInventory().size());
+    }
+
+    @Test
+    public void canHeal() {
+        cleric.addHealingItem(herbalTea);
+        cleric.loseHP(20);
+        cleric.heal(cleric, herbalTea);
+        assertEquals(35, cleric.getCurrentHP());
+        assertEquals(0, cleric.getInventory().size());
+    }
+
+    @Test
+    public void healingReturnsCatchphrase() {
+        cleric.addHealingItem(herbalTea);
+        cleric.loseHP(20);
+        assertEquals("Yir healed!", cleric.heal(cleric, herbalTea));
     }
 }

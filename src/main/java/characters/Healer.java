@@ -1,13 +1,40 @@
 package characters;
 
 import components.HealingItem;
+import interfaces.IHeal;
 
-public abstract class Healer extends Player {
+import java.util.ArrayList;
 
-    private HealingItem healingItem;
+public abstract class Healer extends Player implements IHeal {
 
-    public Healer(String name, int maxHP, String catchPhrase, HealingItem healingItem) {
+    private ArrayList<HealingItem> inventory;
+
+    public Healer(String name, int maxHP, String catchPhrase) {
         super(name, maxHP, catchPhrase);
-        this.healingItem = healingItem;
+        this.inventory = new ArrayList<HealingItem>();
+    }
+
+    public ArrayList<HealingItem> getInventory() {
+        ArrayList<HealingItem> list = new ArrayList<HealingItem>(inventory);
+        return list;
+    }
+
+    public void addHealingItem(HealingItem healingItem) {
+        this.inventory.add(healingItem);
+    }
+
+    public void removeHealingItem(HealingItem healingItem) {
+        this.inventory.remove(healingItem);
+    }
+
+
+
+    public String heal(Player character, HealingItem healingItem) {
+        int heal = healingItem.getHealingPower();
+        character.gainHP(heal);
+
+        this.removeHealingItem(healingItem);
+
+        return this.getCatchPhrase();
     }
 }
