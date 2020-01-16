@@ -12,5 +12,15 @@ public abstract class Player {
         this.catchPhrase = catchPhrase;
     }
 
+    public String getName() {
+        return this.name;
+    }
 
+    public int getHP() {
+        return this.hp;
+    }
+
+    public String getCatchPhrase() {
+        return this.catchPhrase;
+    }
 }

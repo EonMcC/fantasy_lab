@@ -14,12 +14,23 @@ public class ClericTest {
     @Before
     public void before() {
         herbalTea = new HerbalTea(5);
-        cleric = new Cleric("Florence", 50, "You're healed!", herbalTea);
+        cleric = new Cleric("Florence", 50, "Yir healed!", herbalTea);
     }
 
     @Test
     public void canGetName() {
         assertEquals("Florence", cleric.getName());
     }
+
+    @Test
+    public void canReturnHP() {
+        assertEquals(50, cleric.getHP());
+    }
+
+    @Test
+    public void canReturnCatchPhrase() {
+        assertEquals("Yir healed!", cleric.getCatchPhrase());
+    }
+
 
 }
