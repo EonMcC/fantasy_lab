@@ -105,4 +105,11 @@ public class ClericTest {
     public void cannotHeal() {
         assertEquals("You don't have that item", cleric.heal(cleric, herbalTea));
     }
+
+    @Test
+    public void playerStartsAlive() {
+        assertEquals(true, cleric.checkIfAlive());
+    }
+
+
 }

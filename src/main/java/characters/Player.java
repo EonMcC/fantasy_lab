@@ -6,12 +6,14 @@ public abstract class Player {
     private int maxHP;
     private double currentHP;
     private String catchPhrase;
+    private boolean isAlive;
 
     public Player(String name, int maxHP, String catchPhrase) {
         this.name = name;
         this.maxHP = maxHP;
         this.currentHP = maxHP;
         this.catchPhrase = catchPhrase;
+        this.isAlive = true;
     }
 
     public String getName() {
@@ -41,5 +43,9 @@ public abstract class Player {
         else {
             this.currentHP = this.maxHP;
         }
+    }
+
+    public boolean checkIfAlive() {
+        return this.isAlive;
     }
 }

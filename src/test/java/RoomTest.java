@@ -24,4 +24,20 @@ public class RoomTest {
         assertEquals(warlock, room.getEnemy());
     }
 
+    @Test
+    public void exitStartsLocked() {
+        assertEquals(true, room.isLocked());
+    }
+
+    @Test
+    public void canUnlockExit() {
+        room.unlockExit();
+        assertEquals(false, room.isLocked());
+    }
+
+//    @Test
+//    public void exitUnlocksWhenEnemyDead() {
+//
+//    }
+
 }
