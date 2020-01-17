@@ -111,5 +111,9 @@ public class ClericTest {
         assertEquals(true, cleric.checkIfAlive());
     }
 
-
+    @Test
+    public void playerCanBeKilled() {
+        cleric.loseHP(50);
+        assertEquals(false, cleric.checkIfAlive());
+    }
 }

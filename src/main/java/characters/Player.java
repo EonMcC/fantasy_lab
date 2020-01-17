@@ -34,6 +34,9 @@ public abstract class Player {
 
     public void loseHP(double damage) {
         this.currentHP -= damage;
+        if (currentHP <= 0) {
+            killPlayer();
+        }
     }
 
     public void gainHP(int heal) {
@@ -47,5 +50,9 @@ public abstract class Player {
 
     public boolean checkIfAlive() {
         return this.isAlive;
+    }
+
+    public void killPlayer() {
+        this.isAlive = !this.isAlive;
     }
 }
