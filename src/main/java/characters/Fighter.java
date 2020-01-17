@@ -21,19 +21,22 @@ public abstract class Fighter extends Player {
     }
 
     public void attack(Player character) {
+            int baseDamage = this.weapon.getDamage();
+            if (character instanceof MagicUser || character instanceof Knight) {
 
-            if (character instanceof MagicUser) {
-                int damage = (int)(this.weapon.getDamage() * ((MagicUser) character).getCreature().getDefence());
-                character.loseHP(damage);
-            }
+                if (character instanceof MagicUser) {
+                    double defence = ((MagicUser) character).getCreature().getDefence();
+                    double damage = baseDamage * defence;
+                    character.loseHP(damage);
+                }
 
-            if (character instanceof Knight) {
-                int damage = (int)(this.weapon.getDamage() * ((Knight) character).getArmour().getDefence());
-                character.loseHP(damage);
+                if (character instanceof Knight) {
+                    int damage = (int) (this.weapon.getDamage() * ((Knight) character).getArmour().getDefence());
+                    character.loseHP(damage);
+                }
             }
-            else {
+            else  {
                 int damage = this.weapon.getDamage();
-
                 character.loseHP(damage);
             }
         }

@@ -43,27 +43,27 @@ public class WarlockTest {
 
     @Test
     public void canReturnCurrentHP() {
-        assertEquals(75, warlock.getCurrentHP());
+        assertEquals(75, warlock.getCurrentHP(), 0.01);
     }
 
     @Test
     public void canLoseHP() {
         warlock.loseHP(10);
-        assertEquals(65, warlock.getCurrentHP());
+        assertEquals(65.0, warlock.getCurrentHP(), 0.01);
     }
     //
     @Test
     public void canGainHP() {
         warlock.loseHP(15);
         warlock.gainHP(10);
-        assertEquals(70, warlock.getCurrentHP());
+        assertEquals(70.0, warlock.getCurrentHP(), 0.01);
     }
 
     @Test
     public void cannotHealMoreThanMaxHP() {
         warlock.loseHP(10);
         warlock.gainHP(20);
-        assertEquals(75, warlock.getCurrentHP());
+        assertEquals(75.0, warlock.getCurrentHP(), 0.01);
     }
 
     @Test
@@ -91,13 +91,13 @@ public class WarlockTest {
     public void canAttack() {
         warlock.addSpell(SpellType.FIREBOLT);
         warlock.attack(cleric, SpellType.FIREBOLT);
-        assertEquals(30, cleric.getCurrentHP());
+        assertEquals(30.0, cleric.getCurrentHP(), 0.01);
     }
 
     @Test
     public void magicUserOpponentCanDefend() {
         warlock.addSpell(SpellType.FIREBOLT);
         warlock.attack(wizard, SpellType.FIREBOLT);
-        assertEquals(40, wizard.getCurrentHP());
+        assertEquals(40.0, wizard.getCurrentHP(), 0.01);
     }
 }

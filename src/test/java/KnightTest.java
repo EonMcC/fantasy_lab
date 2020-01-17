@@ -42,27 +42,27 @@ public class KnightTest {
 
     @Test
     public void canReturnCurrentHP() {
-        assertEquals(150, knight.getCurrentHP());
+        assertEquals(150, knight.getCurrentHP(), 0.01);
     }
 
     @Test
     public void canLoseHP() {
         knight.loseHP(10);
-        assertEquals(140, knight.getCurrentHP());
+        assertEquals(140.0, knight.getCurrentHP(), 0.01);
     }
     //
     @Test
     public void canGainHP() {
         knight.loseHP(15);
         knight.gainHP(10);
-        assertEquals(145, knight.getCurrentHP());
+        assertEquals(145, knight.getCurrentHP(), 0.01);
     }
 
     @Test
     public void cannotHealMoreThanMaxHP() {
         knight.loseHP(10);
         knight.gainHP(20);
-        assertEquals(150, knight.getCurrentHP());
+        assertEquals(150, knight.getCurrentHP(), 0.01);
     }
 
     @Test
@@ -89,13 +89,13 @@ public class KnightTest {
     @Test
     public void canAttack() {
         knight.attack(cleric);
-        assertEquals(30, cleric.getCurrentHP());
+        assertEquals(30, cleric.getCurrentHP(), 0.01);
     }
 
     @Test
     public void magicUserOpponentCanDefend() {
         knight.attack(wizard);
-        assertEquals(40, wizard.getCurrentHP());
+        assertEquals(40.00, wizard.getCurrentHP(), 0.01);
     }
 
 }

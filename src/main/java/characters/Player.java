@@ -4,7 +4,7 @@ public abstract class Player {
 
     private String name;
     private int maxHP;
-    private int currentHP;
+    private double currentHP;
     private String catchPhrase;
 
     public Player(String name, int maxHP, String catchPhrase) {
@@ -22,7 +22,7 @@ public abstract class Player {
         return this.maxHP;
     }
 
-    public int getCurrentHP() {
+    public double getCurrentHP() {
         return this.currentHP;
     }
 
@@ -30,7 +30,7 @@ public abstract class Player {
         return this.catchPhrase;
     }
 
-    public void loseHP(int damage) {
+    public void loseHP(double damage) {
         this.currentHP -= damage;
     }
 

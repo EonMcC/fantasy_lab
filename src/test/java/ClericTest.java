@@ -35,27 +35,27 @@ public class ClericTest {
 
     @Test
     public void canReturnCurrentHP() {
-        assertEquals(50, cleric.getCurrentHP());
+        assertEquals(50, cleric.getCurrentHP(), 0.01);
     }
 
     @Test
     public void canLoseHP() {
         cleric.loseHP(10);
-        assertEquals(40, cleric.getCurrentHP());
+        assertEquals(40, cleric.getCurrentHP(), 0.01);
     }
 //
     @Test
     public void canGainHP() {
         cleric.loseHP(15);
         cleric.gainHP(10);
-        assertEquals(45, cleric.getCurrentHP());
+        assertEquals(45, cleric.getCurrentHP(), 0.01);
     }
 
     @Test
     public void cannotHealMoreThanMaxHP() {
         cleric.loseHP(10);
         cleric.gainHP(20);
-        assertEquals(50, cleric.getCurrentHP());
+        assertEquals(50, cleric.getCurrentHP(), 0.01);
     }
 
     @Test
@@ -90,7 +90,7 @@ public class ClericTest {
         cleric.addHealingItem(herbalTea);
         cleric.loseHP(20);
         cleric.heal(cleric, herbalTea);
-        assertEquals(35, cleric.getCurrentHP());
+        assertEquals(35, cleric.getCurrentHP(), 0.01);
         assertEquals(0, cleric.getInventory().size());
     }
 
