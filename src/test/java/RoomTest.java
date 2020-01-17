@@ -1,0 +1,27 @@
+import characters.Warlock;
+import creatures.Ogre;
+import org.junit.Before;
+import org.junit.Test;
+import rooms.Room;
+
+import static junit.framework.TestCase.assertEquals;
+
+public class RoomTest {
+
+    private Room room;
+    private Ogre ogre;
+    private Warlock warlock;
+
+    @Before
+    public void before() {
+        ogre = new Ogre("Oggy", 0.4, 15);
+        warlock = new Warlock("Harrion", 75, "You've been locked", ogre);
+        room = new Room(warlock);
+    }
+
+    @Test
+    public void hasEnemy() {
+        assertEquals(warlock, room.getEnemy());
+    }
+
+}
