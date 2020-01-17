@@ -19,7 +19,7 @@ public class GameTest {
     public void before() {
         game = new Game();
         knight = new Knight("Sir Killalot", 150, "Stabby stabby", WeaponType.SWORD, ArmourType.ADAMANTIUM);
-        room = new Room(knight);
+        room = new Room();
     }
 
     @Test

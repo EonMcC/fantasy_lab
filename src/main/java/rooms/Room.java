@@ -8,9 +8,13 @@ public class Room {
     private Player player;
     private Boolean exitLocked;
 
-    public Room(Player player) {
-        this.player = player;
+    public Room() {
+        this.player = null;
         this.exitLocked = true;
+    }
+
+    public void addEnemy(Player enemy) {
+        this.player = enemy;
     }
 
     public Player getEnemy() {
