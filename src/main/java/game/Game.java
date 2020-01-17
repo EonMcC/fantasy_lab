@@ -1,6 +1,10 @@
 package game;
 
+import characters.Cleric;
+import characters.Knight;
 import characters.Player;
+import components.ArmourType;
+import components.WeaponType;
 import rooms.Room;
 
 import java.util.ArrayList;
@@ -26,10 +30,12 @@ public class Game {
     }
 
     public ArrayList<Player> getParty() {
-        return this.party;
+        ArrayList<Player> partyCopy = new ArrayList<Player>(party);
+        return partyCopy;
     }
     public ArrayList<Room> getRooms() {
-        return this.rooms;
+        ArrayList<Room> roomsCopy = new ArrayList<Room>(rooms);
+        return roomsCopy;
     }
 
     public void addRoom(Room room) {
@@ -38,5 +44,16 @@ public class Game {
 
     public void addPlayer(Player player) {
         this.party.add(player);
+    }
+
+    public Player convertNumberToCharacter(int number) {
+        switch (number) {
+            case 1:
+                return new Knight("Sir Killalot", 150, "Your Mother smells of Elderberries", WeaponType.SWORD, ArmourType.ADAMANTIUM);
+            case 2:
+                return new Cleric("Florence", 50, "Yir healed!");
+            default:
+                return new Knight("Default Knight", 150, "Your Mother smells of Elderberries", WeaponType.SWORD, ArmourType.ADAMANTIUM);
+        }
     }
 }
