@@ -31,13 +31,16 @@ public class RoomTest {
 
     @Test
     public void canUnlockExit() {
-        room.unlockExit();
+        warlock.killPlayer();
+        room.unlockExit(warlock);
         assertEquals(false, room.isLocked());
     }
 
-//    @Test
-//    public void exitUnlocksWhenEnemyDead() {
-//
-//    }
+    @Test
+    public void exitUnlocksWhenEnemyDead() {
+        warlock.killPlayer();
+        room.unlockExit(warlock);
+        assertEquals(false, room.isLocked());
+    }
 
 }

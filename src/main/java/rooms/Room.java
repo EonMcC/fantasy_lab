@@ -13,7 +13,6 @@ public class Room {
         this.exitLocked = true;
     }
 
-
     public Player getEnemy() {
         return this.player;
     }
@@ -22,7 +21,9 @@ public class Room {
         return this.exitLocked;
     }
 
-    public void unlockExit() {
-        this.exitLocked = !this.exitLocked;
+    public void unlockExit(Player enemy) {
+        if (enemy.checkIfAlive() == false) {
+            this.exitLocked = !this.exitLocked;
+        }
     }
 }
