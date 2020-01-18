@@ -9,11 +9,12 @@ import characters.Healer;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class GameRunner {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         //Object Set Up
         Game game;
@@ -68,7 +69,8 @@ public class GameRunner {
 
         //Game Intro
         System.out.println("Ready Player One?");
-        System.out.println("Good. Now select a companion for Alice.");
+        TimeUnit.SECONDS.sleep(2);
+        System.out.println("\nGood. Now select a companion for Alice.");
         System.out.println("1. Knight | 2. Cleric");
         Scanner scanner = new Scanner(System.in);
         int companionNumber = scanner.nextInt();
@@ -102,10 +104,14 @@ public class GameRunner {
                     break;
             }
             Player enemy = currentRoom.getEnemy();
-            System.out.println("\nEntering room " + currentRoomNum + ", Alice and " + companion.getName() + " are suddenly accosted by ... " + enemy.getName() + "!");
+            System.out.println("\nWhile entering room " + currentRoomNum + ", Alice and " + companion.getName() + " are suddenly accosted by ... " + enemy.getName() + "!");
+            TimeUnit.SECONDS.sleep(2);
+            System.out.print("\033[H\033[2J");
             System.out.println("\nFIGHT!\n");
+            TimeUnit.SECONDS.sleep(2);
 
             System.out.println("\nAs " + enemy.getName() + " approaches, Alice decides to ...");
+            TimeUnit.SECONDS.sleep(1);
 
             //Fighting Loop Starts
             while (currentRoom.isLocked() && alice.checkIfAlive()) {
@@ -117,6 +123,7 @@ public class GameRunner {
                 } else {
                     System.out.println("\n... that was not effective ...");
                 }
+                TimeUnit.SECONDS.sleep(2);
 
                 if (enemy.checkIfAlive() == false) {
                     System.out.println("\n" + enemy.getName() + " falls to the floor. The door across the room unlocks");
@@ -132,29 +139,29 @@ public class GameRunner {
                         party = game.getParty();
                         Player companionToAttack = game.getRandomCompanion(party);
                         ((Fighter) enemy).attack(companionToAttack);
-                        System.out.println("\n" + enemy.getName() + " attacks " + companionToAttack.getName() + " with " + ((Fighter) enemy).getWeapon() + "for " + ((Fighter) enemy).getWeapon().getDamage() + " damage.");
+                        System.out.println("\n" + enemy.getCatchPhrase() + " while attacking " + companionToAttack.getName() + " with a " + ((Fighter) enemy).getWeapon().getName() + " for " + ((Fighter) enemy).getWeapon().getDamage() + " damage.");
                     }
                 }
+                TimeUnit.SECONDS.sleep(2);
 
                 if (companion.checkIfAlive() || alice.checkIfAlive()) {
                     ((Fighter) knight).attack(enemy);
-                    System.out.println("\n" + companion.getCatchPhrase());
-                    System.out.println("\n" + companion.getName() + " attacks");
+                    System.out.println("\n" + companion.getCatchPhrase() + " while attacking " + enemy.getName());
                     if (enemy.checkIfAlive() == false) {
                         currentRoom.unlockExit(enemy);
                         System.out.println("\n" + enemy.getName() + " falls to the floor. The door across the room unlocks");
                         currentRoomNum += 1;
                     }
                 }
-                System.out.println("=====================");
-                System.out.println("Alice HP: " + alice.getCurrentHP());
-                System.out.println(enemy.getName() + " HP: " +enemy.getCurrentHP());
-                System.out.println("=====================");
+                TimeUnit.SECONDS.sleep(3);
+                System.out.print("\033[H\033[2J");
+                System.out.println("\n\n\n\t=====================");
+                System.out.println("\tAlice HP: " + alice.getCurrentHP());
+                System.out.println("\t" + enemy.getName() + " HP: " +enemy.getCurrentHP());
+                System.out.println("\t=====================\n\n\n");
                 System.out.println("\npress any number for next round");
                 int nextround = scanner.nextInt();
                 System.out.print("\033[H\033[2J");
-                System.out.flush();
-
                 //Fighting Loop ends Here
 
 
