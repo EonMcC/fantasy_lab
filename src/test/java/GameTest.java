@@ -1,3 +1,4 @@
+import characters.Alice;
 import characters.Knight;
 import characters.Player;
 import components.ArmourType;
@@ -7,6 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 import rooms.Room;
 
+import java.util.ArrayList;
+
 import static junit.framework.TestCase.assertEquals;
 
 public class GameTest {
@@ -14,12 +17,17 @@ public class GameTest {
     private Game game;
     private Room room;
     private Player knight;
+    private ArrayList<Player> party;
+    private Alice alice;
 
     @Before
     public void before() {
+        alice = new Alice("Alice", 50, "Curiouser and curiouser!", WeaponType.AXE);
         game = new Game();
         knight = new Knight("Sir Killalot", 150, "Stabby stabby", WeaponType.SWORD, ArmourType.ADAMANTIUM);
         room = new Room();
+        party = new ArrayList<Player>();
+
     }
 
     @Test

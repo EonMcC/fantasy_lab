@@ -8,6 +8,7 @@ import components.WeaponType;
 import rooms.Room;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Game {
 
@@ -55,5 +56,14 @@ public class Game {
             default:
                 return new Knight("Default Knight", 150, "Your Mother smells of Elderberries", WeaponType.SWORD, ArmourType.ADAMANTIUM);
         }
+    }
+
+
+    public Player getRandomCompanion(ArrayList<Player> party) {
+        int partySize = party.size();
+        Random randomNum = new Random();
+        int index = randomNum.nextInt(2);
+        Player companion = party.get(index);
+        return companion;
     }
 }
