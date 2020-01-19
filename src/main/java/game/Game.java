@@ -47,18 +47,6 @@ public class Game {
         this.party.add(player);
     }
 
-    public Player convertNumberToCharacter(int number) {
-        switch (number) {
-            case 1:
-                return new Knight("Sir Killalot", 150, "Your Mother smells of Elderberries", WeaponType.SWORD, ArmourType.ADAMANTIUM);
-            case 2:
-                return new Cleric("Florence", 50, "Yir healed!");
-            default:
-                return new Knight("Default Knight", 150, "Your Mother smells of Elderberries", WeaponType.SWORD, ArmourType.ADAMANTIUM);
-        }
-    }
-
-
     public Player getRandomCompanion(ArrayList<Player> party) {
         int partySize = party.size();
         Random randomNum = new Random();

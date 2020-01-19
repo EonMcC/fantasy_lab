@@ -37,12 +37,11 @@ public class GameRunner {
 
         party = game.getParty();
 
-
         room1 = new Room();
         room2 = new Room();
         room3 = new Room();
 
-        alice = new Alice("Alice", 50, "Curiouser and curiouser!", WeaponType.AXE);
+        alice = new Alice("Alice", 100, "Curiouser and curiouser!", WeaponType.AXE);
         knight = new Knight("Sir Killalot", 150, "'Your Mother smells of Elderberries', shouts Sir Killalot", WeaponType.SWORD, ArmourType.ADAMANTIUM);
         knight2 = new Knight("Sir Jamie", 150, "'Swish!', exclaimed Sir Jamie", WeaponType.SWORD, ArmourType.ADAMANTIUM);
         knight3 = new Knight("Sir Squanch", 150, "Squanch!, squanched Sir Squanch!", WeaponType.SWORD, ArmourType.ADAMANTIUM);
@@ -106,7 +105,6 @@ public class GameRunner {
             Player enemy = currentRoom.getEnemy();
             System.out.println("\nWhile entering room " + currentRoomNum + ", Alice and " + companion.getName() + " are suddenly accosted by ... " + enemy.getName() + "!");
             TimeUnit.SECONDS.sleep(2);
-            System.out.print("\033[H\033[2J");
             System.out.println("\nFIGHT!\n");
             TimeUnit.SECONDS.sleep(2);
 
@@ -154,13 +152,13 @@ public class GameRunner {
                     }
                 }
                 TimeUnit.SECONDS.sleep(3);
-                System.out.print("\033[H\033[2J");
-                System.out.println("\n\n\n\t=====================");
+                System.out.println("\n\t=====================");
                 System.out.println("\tAlice HP: " + alice.getCurrentHP());
+                System.out.println("\t" + companion.getName() + " HP: " + companion.getCurrentHP());
                 System.out.println("\t" + enemy.getName() + " HP: " +enemy.getCurrentHP());
-                System.out.println("\t=====================\n\n\n");
-                System.out.println("\npress any number for next round");
-                int nextround = scanner.nextInt();
+                System.out.println("\t=====================\n");
+                System.out.println("\nnext round in 5 seconds");
+                TimeUnit.SECONDS.sleep(5);
                 System.out.print("\033[H\033[2J");
                 //Fighting Loop ends Here
 
